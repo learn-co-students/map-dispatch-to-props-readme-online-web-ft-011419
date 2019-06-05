@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect } from 'react-redux';
-import { addItem } from  './actions/items';
+//import { addItem } from  './actions/items';
 
 class App extends Component {
-
+// this refrences the store this.props.store.dispatch(addItem());
   handleOnClick() {
-    this.props.store.dispatch(addItem());
+   console.log(this.props.dispatch())
   }
 
   render() {
+    debugger
     return (
       <div className="App">
         <button onClick={(event) => this.handleOnClick(event)}>
@@ -21,10 +22,5 @@ class App extends Component {
   }
 };
 
-const mapStateToProps = (state) => {
-  return {
-    items: state.items
-  };
-};
 
-export default connect(mapStateToProps)(App);
+export default connect(state => ({ items: state.items }))(App);
